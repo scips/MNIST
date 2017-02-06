@@ -1,15 +1,4 @@
-'''
-Deep Learning Programming Assignment 1
---------------------------------------
-Name:
-Roll No.:
-
-======================================
-Complete the functions in this file.
-Note: Do not change the function signatures of the train
-and test functions
-'''
-import numpy as np
+import numpy   as np
 def softmax(x):
     return np.exp(x)/(np.sum(np.exp(x),axis=1,keepdims=True))
 def cross_entropy(target,predicted):
@@ -39,18 +28,10 @@ def train(trainX, trainY):
         b=b-np.around((np.sum(soft-ty)),4)
         #print b
     np.savetxt("weights.csv",w,delimiter=",")
-        
+
 
 def test(testX):
-    '''
-    Complete this function.
-    This function must read the weight files and
-    return the predicted labels.
-    The returned object must be a 1-dimensional numpy array of
-    length equal to the number of examples. The i-th element
-    of the array should contain the label of the i-th test
-    example.
-    '''
+    #Read stored weights
     w=np.genfromtxt("weights.csv",delimiter=",")
     print w.shape,w
     newy=testX.reshape(10000,784).dot(w)
